@@ -1,0 +1,6 @@
+".\Objects\STARTUP.obj",
+".\Objects\add.obj",
+".\Objects\ascendingorder.obj",
+".\Objects\led_on_off.obj" 
+TO ".\Objects\codes" 
+PRINT(".\Listings\codes.m51")

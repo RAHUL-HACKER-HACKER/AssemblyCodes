@@ -1,0 +1,56 @@
+A51 MACRO ASSEMBLER  LED_ON_OFF                                                           12/26/2022 08:49:09 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\led_on_off.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE led_on_off.a51 SET(SMALL) DEBUG PRINT(.\Listings\led_on_off.lst) OBJECT
+                      (.\Objects\led_on_off.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+0000                   1     ORG 0000H
+0000                   2     BACK:    
+0000 74FF              3           MOV A,#0FFH
+0002 F580              4           MOV P0,A
+0004 110E              5               ACALL DELAY
+0006 7400              6               MOV A,#00H
+0008 F580              7               MOV P0,A
+000A 110E              8               ACALL DELAY
+000C 80F2              9               SJMP BACK
+                      10               
+000E                  11     DELAY:
+000E 7F64             12          MOV R7,#100D
+0010 758901           13     L2:  MOV TMOD,#01H
+0013 758CDB           14          MOV TH0,#0DBH
+0016 758AFF           15              MOV TL0,#0FFH
+0019 D28C             16              SETB TCON.4
+001B 308DFD           17     L1:  JNB TCON.5,L1
+001E C28C             18          CLR TCON.4
+0020 C28D             19              CLR TCON.5
+0022 DFEC             20              DJNZ R7,L2
+0024 22               21              RET
+                      22              
+                      23     END      
+A51 MACRO ASSEMBLER  LED_ON_OFF                                                           12/26/2022 08:49:09 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+BACK . . . . . . .  C ADDR   0000H   A   
+DELAY. . . . . . .  C ADDR   000EH   A   
+L1 . . . . . . . .  C ADDR   001BH   A   
+L2 . . . . . . . .  C ADDR   0010H   A   
+P0 . . . . . . . .  D ADDR   0080H   A   
+TCON . . . . . . .  D ADDR   0088H   A   
+TH0. . . . . . . .  D ADDR   008CH   A   
+TL0. . . . . . . .  D ADDR   008AH   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
